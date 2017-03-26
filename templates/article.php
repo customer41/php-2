@@ -6,7 +6,9 @@
 </head>
 <body>
 
-<p><a href="/index.php">На главную</a></p>
+<h1 style="text-align: center;">Новостной сайт</h1>
+<p><a href="/index.php">Главная страница сайта</a></p>
+<hr>
 
 <?php if (false == $article): ?>
     <p>Запрашиваемая новость не найдена</p>
@@ -19,5 +21,6 @@
     </article>
 <?php endif; ?>
 
+<hr>
 </body>
 </html>

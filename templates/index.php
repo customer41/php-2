@@ -5,7 +5,9 @@
     <title>Главная страница сайта</title>
 </head>
 <body>
-    <h1 style="text-align: center;">Последние новости</h1>
+
+    <h1 style="text-align: center;">Новостной сайт</h1>
+    <p><a href="/admin.php">Админ-панель</a></p>
     <hr>
 
     <?php if (empty($data)): ?>

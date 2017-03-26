@@ -1,7 +1,7 @@
 <?php
 
-require __DIR__ . '/Models/Article.php';
+require __DIR__ . '/autoload.php';
 
-$data = Article::findFew(3, 0, 'DESC');
+$data = \App\Models\Article::findFew(3, 0, 'DESC');
 
 include __DIR__ . '/templates/index.php';

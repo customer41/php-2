@@ -1,7 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../Classes/Db.php';
-require_once __DIR__ . '/../Classes/Model.php';
+namespace App\Models;
+
+use App\Classes\Model;
 
 class Article
     extends Model
