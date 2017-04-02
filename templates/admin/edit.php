@@ -13,10 +13,17 @@
     <h3>Редактировать новость:</h3>
 
     <form style="margin-left: 40px;" action="/edit.php?id=<?php echo $article->id; ?>" method="post">
+        <label for="author">
+            Автор новости:
+            <br>
+            <input style="width: 415px;" type="text" id="author" value="<?php echo $article->author->name; ?>" disabled>
+        </label>
+        <br>
+        <br>
         <label for="title">
             Заголовок новости:
             <br>
-            <input style="width: 400px;" type="text" name="title" id="title" value="<?php echo $article->title; ?>">
+            <input style="width: 415px;" type="text" name="title" id="title" value="<?php echo $article->title; ?>">
         </label>
         <br>
         <br>

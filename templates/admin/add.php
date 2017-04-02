@@ -12,15 +12,24 @@
     <p style="margin-left: 40px;"><a href="/admin.php">Админ-панель</a></p>
     <h3>Добавить новость:</h3>
 
-    <?php if (isset($error)): ?>
-        <p style="margin-left: 40px; color: red;"><?php echo $error; ?></p>
-    <?php endif; ?>
+    <p style="margin-left: 40px; color: red;"><?php echo $error; ?></p>
 
-    <form style="margin-left: 40px;" action="/add.php" method="post">
+    <form style="margin-left: 40px;" action="/save.php" method="post">
+        <label for="author">
+            Автор новости:
+            <br>
+            <select style="width: 415px;" id="author" name="author_id">
+                <?php foreach ($authors as $author): ?>
+                    <option value="<?php echo $author->id; ?>"><?php echo $author->name; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </label>
+        <br>
+        <br>
         <label for="title">
             Заголовок новости:
             <br>
-            <input style="width: 400px;" type="text" name="title" id="title" value="<?php echo $title; ?>">
+            <input style="width: 415px;" type="text" name="title" id="title" value="<?php echo $title; ?>">
         </label>
         <br>
         <br>

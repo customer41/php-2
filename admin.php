@@ -2,6 +2,6 @@
 
 require __DIR__ . '/autoload.php';
 
-$data = \App\Models\Article::findAll('DESC');
-
-include __DIR__ . '/templates/admin/admin.php';
+$view = new \App\Classes\View;
+$view->news = \App\Models\Article::findAll('DESC');
+$view->display('admin/admin.php');

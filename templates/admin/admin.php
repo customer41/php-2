@@ -13,11 +13,11 @@
     <p style="margin-left: 40px;"><a href="/add.php">Добавить новость</a></p>
     <h3>Список новостей:</h3>
 
-    <?php if (empty($data)): ?>
+    <?php if (empty($news)): ?>
         <p>Нет новостей для администрирования</p>
     <?php else: ?>
         <ul>
-            <?php foreach ($data as $article): ?>
+            <?php foreach ($news as $article): ?>
                 <li style="border-top: 1px solid black; list-style-type: none;">
                     <article>
                         <header>
@@ -25,6 +25,7 @@
                         </header>
                         <p><?php echo $article->lead; ?></p>
                         <footer>
+                            <small>Автор: <?php echo $article->author->name; ?></small>
                             <p>
                                 <a href="/edit.php?id=<?php echo $article->id; ?>">Редактировать новость</a> |
                                 <a href="/delete.php?id=<?php echo $article->id; ?>">Удалить новость</a>

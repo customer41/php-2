@@ -20,4 +20,6 @@ if (!empty($_POST)) {
     }
 }
 
-include __DIR__ . '/templates/admin/edit.php';
+$view = new \App\Classes\View;
+$view->article = $article;
+$view->display('admin/edit.php');
