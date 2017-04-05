@@ -18,11 +18,11 @@ class Article
     extends Model
 {
 
-    protected const TABLE = 'news';
+    protected const TABLE = 'News';
 
     public $title;
     public $lead;
-    public $author_id;
+    protected $author_id;
 
     public function __get($name)
     {
@@ -30,6 +30,21 @@ class Article
             return Author::findById($this->author_id);
         }
         return null;
+    }
+
+    public function __set($name, $value)
+    {
+        if ('author' == $name && $value instanceof Author) {
+            $this->author_id = $value->id;
+        }
+    }
+
+    public function __isset($name)
+    {
+        if ('author' == $name) {
+            return isset($this->author_id);
+        }
+        return false;
     }
 
 }

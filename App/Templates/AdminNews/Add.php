@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Админ-панель сайта</title>
+    <title>Админ-панель новостей</title>
 </head>
 <body>
 
-    <h1 style="text-align: center;">Админ-панель сайта</h1>
+    <h1 style="text-align: center;">Админ-панель новостей</h1>
     <hr>
     <h2>Админ-панель новостей :: добавление</h2>
-    <p style="margin-left: 40px;"><a href="/admin.php">Админ-панель</a></p>
+    <p style="margin-left: 40px;"><a href="/adminNews">Админ-панель новостей</a></p>
     <h3>Добавить новость:</h3>
 
     <p style="margin-left: 40px; color: red;"><?php echo $error; ?></p>
 
-    <form style="margin-left: 40px;" action="/save.php" method="post">
+    <form style="margin-left: 40px;" action="/adminNews/save" method="post">
         <label for="author">
             Автор новости:
             <br>

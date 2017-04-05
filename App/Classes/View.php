@@ -8,16 +8,15 @@ class View
 
     use TGetSet;
 
-    const PATH = __DIR__ . '/../../templates/';
+    const PATH_TO_TEMPLATES = __DIR__ . '/../Templates/';
 
     public function render($template)
     {
-        foreach($this->data as $key => $value) {
+        ob_start();
+        foreach($this as $key => $value) {
             $$key = $value;
         }
-
-        ob_start();
-        include self::PATH . $template;
+        include self::PATH_TO_TEMPLATES . $template;
         $content = ob_get_contents();
         ob_end_clean();
         return $content;
@@ -54,7 +53,7 @@ class View
 
     public function valid()
     {
-        return isset($this->data[$this->key()]);
+        return null !== key($this->data);
     }
 
 

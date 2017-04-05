@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Главная страница сайта</title>
+    <title>Все новости</title>
 </head>
 <body>
 
-    <h1 style="text-align: center;">Новостной сайт</h1>
-    <p><a href="/admin.php">Админ-панель</a></p>
+    <h1 style="text-align: center;">Все новости</h1>
+    <p>
+        <a href="/">Главная</a> |
+        <a href="/adminNews">Админ-панель новостей</a>
+    </p>
     <hr>
 
     <?php if (empty($news)): ?>
@@ -21,7 +24,7 @@
                 <p><?php echo $article->lead; ?></p>
                 <footer>
                     <small>Автор: <?php echo $article->author->name; ?></small>
-                    <p><a href="/article.php?id=<?php echo $article->id; ?>">Читать далее...</a></p>
+                    <p><a href="/news/one/?id=<?php echo $article->id; ?>">Читать далее...</a></p>
                 </footer>
             </article>
             <hr>

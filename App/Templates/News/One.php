@@ -6,8 +6,12 @@
 </head>
 <body>
 
-<h1 style="text-align: center;">Новостной сайт</h1>
-<p><a href="/index.php">Главная страница сайта</a></p>
+<h1 style="text-align: center;">Новость</h1>
+<p>
+    <a href="/">Главная страница сайта</a> |
+    <a href="/news/all">Все новости</a> |
+    <a href="/adminNews">Админ-панель новостей</a>
+</p>
 <hr>
 
 <?php if (false == $article): ?>

@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Админ-панель сайта</title>
+    <title>Админ-панель новостей</title>
 </head>
 <body>
 
-    <h1 style="text-align: center;">Админ-панель сайта</h1>
-    <p><a href="/index.php">Главная страница сайта</a></p>
+    <h1 style="text-align: center;">Админ-панель новостей</h1>
+    <p><a href="/">Главная страница сайта</a></p>
     <hr>
-    <h2>Админ-панель новостей</h2>
-    <p style="margin-left: 40px;"><a href="/add.php">Добавить новость</a></p>
+    <h2>Админ-панель новостей :: главная</h2>
+    <p style="margin-left: 40px;"><a href="/adminNews/add">Добавить новость</a></p>
     <h3>Список новостей:</h3>
 
     <?php if (empty($news)): ?>
@@ -27,8 +27,8 @@
                         <footer>
                             <small>Автор: <?php echo $article->author->name; ?></small>
                             <p>
-                                <a href="/edit.php?id=<?php echo $article->id; ?>">Редактировать новость</a> |
-                                <a href="/delete.php?id=<?php echo $article->id; ?>">Удалить новость</a>
+                                <a href="/adminNews/edit/?id=<?php echo $article->id; ?>">Редактировать новость</a> |
+                                <a href="/adminNews/delete/?id=<?php echo $article->id; ?>">Удалить новость</a>
                             </p>
                         </footer>
 
