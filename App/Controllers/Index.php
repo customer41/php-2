@@ -12,7 +12,7 @@ class Index
     protected function actionDefault()
     {
         $this->view->news = Article::findFew(3, 0, 'DESC');
-        $this->view->display('Index/Default.php');
+        $this->view->display(__DIR__ . '/../Templates/Index/Default.php');
     }
 
 }

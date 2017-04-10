@@ -90,4 +90,22 @@ abstract class Model
         $db->execute($sql, [':id' => $this->id]);
     }
 
+    public function fill(array $data)
+    {
+        foreach ($data as $prop => $value) {
+            if (property_exists(static::class, $prop)) {
+                $this->$prop = $value;
+            }
+        }
+    }
+
+    public function isNew()
+    {
+        if (empty($this->id)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

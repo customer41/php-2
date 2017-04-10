@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Classes\Model;
+use App\Exceptions\MultiException;
 
 /**
  * Class Article
@@ -45,6 +46,25 @@ class Article
             return isset($this->author_id);
         }
         return false;
+    }
+
+    public function fill(array $data)
+    {
+        parent::fill($data);
+
+        $errors = new MultiException;
+
+        if (empty($data['title'])) {
+            $errors->add(new \Exception('Пустой заголовок новости!'));
+        }
+
+        if (empty($data['lead'])) {
+            $errors->add(new \Exception('Пустой текст новости!'));
+        }
+
+        if (0 != count($errors)) {
+            throw $errors;
+        }
     }
 
 }

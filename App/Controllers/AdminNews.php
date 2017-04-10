@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Classes\Controller;
+use App\Exceptions\E404Exception;
+use App\Exceptions\MultiException;
 use App\Models\Article;
 use App\Models\Author;
 
@@ -13,42 +15,39 @@ class AdminNews
     protected function actionDefault()
     {
         $this->view->news = Article::findAll('DESC');
-        $this->view->display('AdminNews/Default.php');
+        $this->view->display(__DIR__ . '/../Templates/AdminNews/Default.php');
     }
 
     protected function actionAdd()
     {
-        session_start();
-
         $this->view->authors = Author::findAll();
-        $this->view->title = $_SESSION['title'] ?? '';
-        $this->view->lead = $_SESSION['lead'] ?? '';
-        $this->view->error = $_SESSION['error'] ?? '';
-        $this->view->display('AdminNews/Add.php');
-
-        session_destroy();
+        $this->view->display(__DIR__ . '/../Templates/AdminNews/Add.php');
     }
 
     protected function actionSave()
     {
-        session_start();
-
         if (empty($_POST)) {
-            header('Location: /adminNews/add');
-        } elseif ('' == $_POST['title'] || '' == $_POST['lead']) {
-            $_SESSION['title'] = $_POST['title'];
-            $_SESSION['lead'] = $_POST['lead'];
-            $_SESSION['error'] = 'Пожалуйста, заполните все поля!';
-            header('Location: /adminNews/add');
-        } else {
-            $article = new Article;
-            $article->title = $_POST['title'];
-            $article->lead = $_POST['lead'];
-            $article->author = Author::findById($_POST['author_id']);
+            header('Location: /adminNews');
+            die;
+        }
+        try {
+            if (isset($_GET['id'])) {
+                $article = Article::findById($_GET['id']);
+            } else {
+                $article = new Article;
+            }
+            $article->fill($_POST);
             $article->save();
             header('Location: /adminNews');
-
-            session_destroy();
+        } catch (MultiException $ex) {
+            $this->view->errors = $ex->getErrors();
+            $this->view->article = $article;
+            if ($article->isNew()) {
+                $this->view->authors = Author::findAll();
+                $this->view->display(__DIR__ . '/../Templates/AdminNews/Add.php');
+            } else {
+                $this->view->display(__DIR__ . '/../Templates/AdminNews/Edit.php');
+            }
         }
     }
 
@@ -56,30 +55,19 @@ class AdminNews
     {
         $article = Article::findById($_GET['id']);
         if (false == $article) {
-            header('Location: /adminNews');
-            die;
-        }
-        if (!empty($_POST)) {
-            $title = $_POST['title'];
-            $lead = $_POST['lead'];
-            if ('' != $title && '' != $lead) {
-                $article->title = $title;
-                $article->lead = $lead;
-                $article->save();
-                header('Location: /adminNews');
-                die;
-            }
+            throw new E404Exception('Запрашиваемая новость не найдена.');
         }
         $this->view->article = $article;
-        $this->view->display('AdminNews/Edit.php');
+        $this->view->display(__DIR__ . '/../Templates/AdminNews/Edit.php');
     }
 
     protected function actionDelete()
     {
         $article = Article::findById($_GET['id']);
-        if (false != $article) {
-            $article->delete();
+        if (false == $article) {
+            throw new E404Exception('Запрашиваемая новость не найдена.');
         }
+        $article->delete();
         header('Location: /adminNews');
     }
 

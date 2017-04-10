@@ -8,15 +8,13 @@ class View
 
     use TGetSet;
 
-    const PATH_TO_TEMPLATES = __DIR__ . '/../Templates/';
-
     public function render($template)
     {
         ob_start();
         foreach($this as $key => $value) {
             $$key = $value;
         }
-        include self::PATH_TO_TEMPLATES . $template;
+        include $template;
         $content = ob_get_contents();
         ob_end_clean();
         return $content;

@@ -1,0 +1,20 @@
+Time: 2017-04-09 17:56:41
+Location: C:\OpenServer\domains\php-2.local\App\Controllers\News.php
+Type: App\Exceptions\E404Exception
+Message: Запрашиваемая новость не найдена.
+--------------------------------------------------------------------------------------
+Time: 2017-04-09 17:57:51
+Location: C:\OpenServer\domains\php-2.local\App\Classes\Db.php
+Type: App\Exceptions\DbException
+Message: Не удалось выполнить запрос к базе данных.
+--------------------------------------------------------------------------------------
+Time: 2017-04-09 17:58:11
+Location: C:\OpenServer\domains\php-2.local\App\Classes\Db.php
+Type: PDOException
+Message: SQLSTATE[HY000] [1049] Unknown database 'php27'
+--------------------------------------------------------------------------------------
+Time: 2017-04-10 16:01:49
+Location: C:\OpenServer\domains\php-2.local\App\Controllers\News.php
+Type: App\Exceptions\E404Exception
+Message: Запрашиваемая новость не найдена.
+--------------------------------------------------------------------------------------

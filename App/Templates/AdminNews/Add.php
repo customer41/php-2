@@ -12,7 +12,11 @@
     <p style="margin-left: 40px;"><a href="/adminNews">Админ-панель новостей</a></p>
     <h3>Добавить новость:</h3>
 
-    <p style="margin-left: 40px; color: red;"><?php echo $error; ?></p>
+    <?php if (isset($errors)): ?>
+        <?php foreach ($errors as $error): ?>
+            <p style="margin-left: 40px; color: red;"><?php echo $error->getMessage(); ?></p>
+        <?php endforeach; ?>
+    <?php endif; ?>
 
     <form style="margin-left: 40px;" action="/adminNews/save" method="post">
         <label for="author">
@@ -29,14 +33,14 @@
         <label for="title">
             Заголовок новости:
             <br>
-            <input style="width: 415px;" type="text" name="title" id="title" value="<?php echo $title; ?>">
+            <input style="width: 415px;" type="text" name="title" id="title" value="<?php if (isset($article)) { echo $article->title; } ?>">
         </label>
         <br>
         <br>
         <label for="lead">
             Содержимое новости:
             <br>
-            <textarea name="lead" id="lead" cols="50" rows="10"><?php echo $lead; ?></textarea>
+            <textarea name="lead" id="lead" cols="50" rows="10"><?php if (isset($article)) { echo $article->lead; } ?></textarea>
         </label>
         <br>
         <br>

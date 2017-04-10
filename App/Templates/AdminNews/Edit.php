@@ -12,7 +12,13 @@
     <p style="margin-left: 40px;"><a href="/adminNews">Админ-панель новостей</a></p>
     <h3>Редактировать новость:</h3>
 
-    <form style="margin-left: 40px;" action="/adminNews/edit/?id=<?php echo $article->id; ?>" method="post">
+    <?php if (isset($errors)): ?>
+        <?php foreach ($errors as $error): ?>
+            <p style="margin-left: 40px; color: red;"><?php echo $error->getMessage(); ?></p>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
+    <form style="margin-left: 40px;" action="/adminNews/save/?id=<?php echo $article->id; ?>" method="post">
         <label for="author">
             Автор новости:
             <br>
