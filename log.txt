@@ -18,3 +18,18 @@ Location: C:\OpenServer\domains\php-2.local\App\Controllers\News.php
 Type: App\Exceptions\E404Exception
 Message: Запрашиваемая новость не найдена.
 --------------------------------------------------------------------------------------
+Time: 2017-04-11 18:39:17
+Location: C:\OpenServer\domains\php-2.local\App\Classes\Db.php
+Type: App\Exceptions\DbException
+Message: Не удалось выполнить запрос к базе данных.
+--------------------------------------------------------------------------------------
+Time: 2017-04-11 18:39:52
+Location: C:\OpenServer\domains\php-2.local\App\Classes\Db.php
+Type: PDOException
+Message: SQLSTATE[HY000] [1049] Unknown database 'php22'
+--------------------------------------------------------------------------------------
+Time: 2017-04-11 19:49:13
+Location: C:\OpenServer\domains\php-2.local\App\Classes\Db.php
+Type: PDOException
+Message: SQLSTATE[HY000] [1049] Unknown database 'php22'
+--------------------------------------------------------------------------------------

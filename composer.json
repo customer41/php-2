@@ -1,0 +1,6 @@
+{
+  "require": {
+    "swiftmailer/swiftmailer": "5.4.6",
+    "customer41/multiexception": "dev-master"
+  }
+}

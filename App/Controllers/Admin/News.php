@@ -1,33 +1,32 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Classes\Controller;
 use App\Exceptions\E404Exception;
-use App\Exceptions\MultiException;
 use App\Models\Article;
 use App\Models\Author;
 
-class AdminNews
+class News
     extends Controller
 {
 
-    protected function actionDefault()
+    protected function actionAll()
     {
         $this->view->news = Article::findAll('DESC');
-        $this->view->display(__DIR__ . '/../Templates/AdminNews/Default.php');
+        $this->view->display(__DIR__ . '/../../Templates/Admin/News/All.php');
     }
 
     protected function actionAdd()
     {
         $this->view->authors = Author::findAll();
-        $this->view->display(__DIR__ . '/../Templates/AdminNews/Add.php');
+        $this->view->display(__DIR__ . '/../../Templates/Admin/News/Add.php');
     }
 
     protected function actionSave()
     {
         if (empty($_POST)) {
-            header('Location: /adminNews');
+            header('Location: /admin/news/all');
             die;
         }
         try {
@@ -38,15 +37,15 @@ class AdminNews
             }
             $article->fill($_POST);
             $article->save();
-            header('Location: /adminNews');
-        } catch (MultiException $ex) {
-            $this->view->errors = $ex->getErrors();
+            header('Location: /admin/news/all');
+        } catch (\MultiException $ex) {
+            $this->view->errors = $ex;
             $this->view->article = $article;
             if ($article->isNew()) {
                 $this->view->authors = Author::findAll();
-                $this->view->display(__DIR__ . '/../Templates/AdminNews/Add.php');
+                $this->view->display(__DIR__ . '/../../Templates/Admin/News/Add.php');
             } else {
-                $this->view->display(__DIR__ . '/../Templates/AdminNews/Edit.php');
+                $this->view->display(__DIR__ . '/../../Templates/Admin/News/Edit.php');
             }
         }
     }
@@ -58,7 +57,7 @@ class AdminNews
             throw new E404Exception('Запрашиваемая новость не найдена.');
         }
         $this->view->article = $article;
-        $this->view->display(__DIR__ . '/../Templates/AdminNews/Edit.php');
+        $this->view->display(__DIR__ . '/../../Templates/Admin/News/Edit.php');
     }
 
     protected function actionDelete()
@@ -68,7 +67,7 @@ class AdminNews
             throw new E404Exception('Запрашиваемая новость не найдена.');
         }
         $article->delete();
-        header('Location: /adminNews');
+        header('Location: /admin/news/all');
     }
 
 }

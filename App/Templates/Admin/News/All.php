@@ -10,7 +10,7 @@
     <p><a href="/">Главная страница сайта</a></p>
     <hr>
     <h2>Админ-панель новостей :: главная</h2>
-    <p style="margin-left: 40px;"><a href="/adminNews/add">Добавить новость</a></p>
+    <p style="margin-left: 40px;"><a href="/admin/news/add">Добавить новость</a></p>
     <h3>Список новостей:</h3>
 
     <?php if (empty($news)): ?>
@@ -27,8 +27,8 @@
                         <footer>
                             <small>Автор: <?php echo $article->author->name; ?></small>
                             <p>
-                                <a href="/adminNews/edit/?id=<?php echo $article->id; ?>">Редактировать новость</a> |
-                                <a href="/adminNews/delete/?id=<?php echo $article->id; ?>">Удалить новость</a>
+                                <a href="/admin/news/edit/?id=<?php echo $article->id; ?>">Редактировать новость</a> |
+                                <a href="/admin/news/delete/?id=<?php echo $article->id; ?>">Удалить новость</a>
                             </p>
                         </footer>
 

@@ -4,6 +4,7 @@ namespace App\Classes;
 
 class Config
 {
+
     use TSingleton;
 
     protected $data;

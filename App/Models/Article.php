@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Classes\Model;
-use App\Exceptions\MultiException;
 
 /**
  * Class Article
@@ -52,7 +51,7 @@ class Article
     {
         parent::fill($data);
 
-        $errors = new MultiException;
+        $errors = new \MultiException;
 
         if (empty($data['title'])) {
             $errors->add(new \Exception('Пустой заголовок новости!'));

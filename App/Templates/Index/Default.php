@@ -9,7 +9,7 @@
     <h1 style="text-align: center;">Новостной сайт</h1>
     <p>
         <a href="/news/all">Все новости</a> |
-        <a href="/adminNews">Админ-панель новостей</a>
+        <a href="/admin/news/all">Админ-панель новостей</a>
     </p>
     <hr>
 

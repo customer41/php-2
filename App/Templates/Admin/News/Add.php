@@ -9,7 +9,7 @@
     <h1 style="text-align: center;">Админ-панель новостей</h1>
     <hr>
     <h2>Админ-панель новостей :: добавление</h2>
-    <p style="margin-left: 40px;"><a href="/adminNews">Админ-панель новостей</a></p>
+    <p style="margin-left: 40px;"><a href="/admin/news/all">Админ-панель новостей</a></p>
     <h3>Добавить новость:</h3>
 
     <?php if (isset($errors)): ?>
@@ -18,7 +18,7 @@
         <?php endforeach; ?>
     <?php endif; ?>
 
-    <form style="margin-left: 40px;" action="/adminNews/save" method="post">
+    <form style="margin-left: 40px;" action="/admin/news/save" method="post">
         <label for="author">
             Автор новости:
             <br>

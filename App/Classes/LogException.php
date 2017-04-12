@@ -17,6 +17,7 @@ class LogException
         $this->exception = get_class($ex);
         $this->errorMsg = $ex->getMessage();
     }
+
     public function writeToLogFile()
     {
         $entry  = 'Time: ' . $this->time . "\r\n";
