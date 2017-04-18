@@ -19,3 +19,10 @@
 4. Оформил пакет composer "multiexception". Ссылка https://packagist.org/packages/customer41/multiexception.
     Ссылка на репозиторий на гитхабе: https://github.com/customer41/multiexception.
     А также установил через composer и использовал в своём проекте.
+    
+Домашнее задние №7
+
+1. Создал метод queryEach() в классе Db. Использовал его в методе findFew() абстрактной модели.
+2. Создал класс App\Classes\AdminDataTable по заданию.
+3. В админ-контроллере авторов создал метод actionShowTable(), который выводит всех авторов в виде таблицы,
+    используя класс AdminDataTable

@@ -11,7 +11,7 @@ class Error
     public function actionShow(\Exception $ex)
     {
         $this->view->ex = $ex;
-        $this->view->display(__DIR__ . '/../Templates/Error/Error.php');
+        $this->view->display(__DIR__ . '/../Templates/Error/Show.php');
     }
 
 }

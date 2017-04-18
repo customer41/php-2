@@ -20,7 +20,11 @@ abstract class Model
     {
         $db = new Db;
         $sql = 'SELECT * FROM ' . static::TABLE . ' ORDER BY id ' . $sort . ' LIMIT ' . $offset . ', ' . $limit;
-        return $db->query($sql, static::class);
+        $arr = [];
+        foreach ($db->queryEach($sql, static::class) as $value) {
+            $arr[] = $value;
+        }
+        return $arr;
     }
 
     public static function findById($id)
